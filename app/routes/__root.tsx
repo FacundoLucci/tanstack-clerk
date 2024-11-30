@@ -7,6 +7,7 @@ import {
   import { Meta, Scripts } from '@tanstack/start'
   import type { ReactNode } from 'react'
   import { ClerkProvider, GoogleOneTap } from '@clerk/tanstack-start'
+import { CustomGoogleOneTap } from '../components/GoogleOneTap'
   
   export const Route = createRootRoute({
     head: () => ({
@@ -37,17 +38,19 @@ import {
   function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
     return (
       <ClerkProvider>
-      {/* <GoogleOneTap /> */}
-      <html>
-        <head>
-          <Meta />
-        </head>
-        <body>
-          {children}
-          <ScrollRestoration />
-          <Scripts />
-        </body>
-      </html>
-    </ClerkProvider>
-  )
-}
+        <CustomGoogleOneTap>
+        <button>Sign in with Google</button>
+        </CustomGoogleOneTap>
+        <html>
+          <head>
+            <Meta />
+          </head>
+          <body>
+            {children}
+            <ScrollRestoration />
+            <Scripts />
+          </body>
+        </html>
+      </ClerkProvider>
+    )
+  }
